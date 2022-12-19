@@ -23,8 +23,9 @@ int main(){
             x=(b+ abs(a-b)/2);
 
         if (f(x) == 0) {
-            cout << x;
-            cout << f(x);
+            cout<<int(x*10000)/10000.0<<endl;
+    cout<<int(f(x)*10000)/10000.0<<endl;
+
             return 0;
         }
         else {
@@ -36,7 +37,8 @@ int main(){
         err = abs((b - a) / 2);
     }while (err>=1e-6);
 
-        cout<<x<<endl;
-        cout<<f(x);
+    cout<<int(x*10000)/10000.0<<endl;
+    cout<<int(f(x)*10000)/10000.0<<endl;
+
     return 0;
 }
