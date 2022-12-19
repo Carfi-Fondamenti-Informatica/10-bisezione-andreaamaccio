@@ -1,44 +1,40 @@
 #include <iostream>
-#include <math.h>
-
+#include <cmath>
 using namespace std;
 
 float f(float a){
-    return (a*a * cos(a) + 1);
+    return (a*a*cos(a))+1;
 }
 
-int main(){
-    int err, x;
+bool verifica(float a, float b){
+    if(f(a)*f(b)>=0)
+        return true;
+    else
+        return false;
+}
+
+int main() {
     float a,b;
-    do {
+
+    do{
         cout<<"inserire estremi"<<endl;
-        cin >> a;
-        cin >> b;
-    }while(f(a)*f(b)>=0);
-    do {
-        a = (a + b) / 2;
-        if (a<b)
-        x=(a + abs(a-b)/2);
-        else
-            x=(b+ abs(a-b)/2);
-
-        if (f(x) == 0) {
-            cout<<int(x*10000)/10000.0<<endl;
-    cout<<int(f(x)*10000)/10000.0<<endl;
-
-            return 0;
-        }
+        cin>>a>>b;
+    }while(verifica(a,b));
+    float x;
+    float err;
+    do{
+        x=(a+b)/2;
+        if(f(x)==0)
+            break;
         else {
-            if (f(a) * f(b) < 0)
+            if (!verifica(a, x))
                 b = x;
             else
                 a = x;
+            err = abs((b - a) / 2);
         }
-        err = abs((b - a) / 2);
-    }while (err>=1e-6);
-
+    }while(err>=1e-6);
     cout<<int(x*10000)/10000.0<<endl;
-    cout<<int(f(x)*10000)/10000.0<<endl;
 
     return 0;
 }
